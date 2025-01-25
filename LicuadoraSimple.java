@@ -82,4 +82,20 @@ public class LicuadoraSimple implements Licuadora {
         return velocidad;
     }
 
+    @Override
+    public int consultarVelocidad() {
+        System.out.println("La velocidad actual es: " + velocidad);
+        return velocidad;
+    }
+
+    @Override
+    public boolean estaLlena() {
+        System.out.println("Contenido actual: " + contenido + " mililitros.");
+        return contenido > 0;
+    }
+
+    @Override
+    public boolean estaEncendida() {
+        return encendida;
+    }
 }
