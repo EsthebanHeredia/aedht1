@@ -25,4 +25,61 @@ public class LicuadoraSimple implements Licuadora {
             System.out.println("La licuadora ya está apagada.");
         }
     }
+
+    @Override
+    public double llenar(double volumen) {
+
+        if (contenido + volumen <= capacidadMaxima) {
+            contenido += volumen;
+            System.out.println("Licuadora llena con " + volumen + " ml. Contenido total: " + contenido + " mililitros.");
+        } else {
+            System.out.println("No se puede agregar " + volumen + " ml. Excede la capacidad máxima.");
+        }
+        return contenido;
+    }
+
+    @Override
+    public double vaciar() {
+        contenido = 0;
+        return contenido;
+    }
+
+    @Override
+    public double servir(double volumen) {
+        if(volumen > 0 && volumen < contenido){
+            contenido -= volumen;
+        }else{
+            System.out.println("No se puede vaciar " + volumen + " ml. No hay contenido suficiente.");
+        }
+        return contenido;
+    }
+
+    @Override
+    public int incrementarVelocidad() {
+        if (!encendida) {
+            System.out.println("Debe encender la licuadora antes de cambiar la velocidad.");
+        } else if (contenido == 0) {
+            System.out.println("Debe llenar la licuadora antes de cambiar la velocidad.");
+        } else if (velocidad < 10) {
+            velocidad++;
+            System.out.println("Velocidad incrementada a: " + velocidad);
+        } else {
+            System.out.println("La velocidad ya está al máximo.");
+        }
+        return velocidad;
+    }
+
+    @Override
+    public int decrecerVelocidad() {
+        if (!encendida) {
+            System.out.println("Debe encender la licuadora antes de cambiar la velocidad.");
+        } else if (velocidad > 0) {
+            velocidad--;
+            System.out.println("Velocidad disminuida a: " + velocidad);
+        } else {
+            System.out.println("La velocidad ya está en 0.");
+        }
+        return velocidad;
+    }
+
 }
